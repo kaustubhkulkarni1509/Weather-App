@@ -5,6 +5,10 @@ const geocode=require('./utils/geocode')
 const forecast=require('./utils/forecast')
 
 const app = express()
+
+//to deploy on heroku port value is catched.......3000 for locally and process.env.PORT for heroku port
+const port = process.env.PORT || 3000
+
 const publicDirectoryPath = path.join(__dirname,'../public') 
 
 //if you do not want to use name views for the directory then use the following two lines...where templates is the name of directory
@@ -121,6 +125,6 @@ app.get('*',(req,res)=>{
  
 
 
-app.listen(3000,()=>{
-    console.log('Server is up on port 3000')
+app.listen(port,()=>{
+    console.log('Server is up on port'+port)
 })

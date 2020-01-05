@@ -7,7 +7,7 @@ fetch('http://puzzle.mead.io/puzzle').then((response)=>{
 })
 
 
-fetch('http://localhost:3000/weather?address=San%20Francisco').then((response)=>{
+fetch('/weather?address=San%20Francisco').then((response)=>{
     response.json().then((data)=>{
         if (data.error){
             console.log(data.error)
@@ -29,7 +29,9 @@ const messageTwo = document.querySelector('#message-2')
 weatherForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     const location= search.value
-    const url = 'http://localhost:3000/weather?address=' + location
+    //when running app on locat host use 'http://localhost:3000/weather?address=' + location as url and when running on heroku or any prod
+    // use '/weather?address=' + location
+    const url = '/weather?address=' + location
     messageOne.textContent = ''
     messageTwo.textContent = ''
     fetch(url).then((response)=>{
